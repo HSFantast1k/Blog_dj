@@ -3,6 +3,7 @@ from statistics import mode
 from tabnanny import verbose
 from turtle import title
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 '''
@@ -29,9 +30,12 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'slug': self.slug})
+
     class Meta:
         ordering = ['title']
-        verbose_name = 'Категория'
+        verbose_name = 'Категория (ю)'
         verbose_name_plural = 'Категории'
 
 

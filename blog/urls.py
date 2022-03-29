@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import include,path
 
 from .views import *
@@ -5,5 +6,5 @@ from .views import *
 
 urlpatterns = [
     path('', index, name='home'), 
-    path('__debug__/', include('debug_toolbar.urls')),
+    path('category/<str:slug>', get_category, name='category'),
 ]
